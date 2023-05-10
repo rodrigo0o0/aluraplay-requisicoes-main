@@ -11,9 +11,12 @@ async function criarVideo(event) {
     var titulo = document.querySelector('[data-titulo]').value;
     var imagem = document.querySelector('[data-imagem]').value;
     var descricao = Math.floor(Math.random() * 10).toString();
-
-    await conectaApi.criaVideo(titulo,descricao,url,imagem);
-
-    window.location.href = '../pages/envio-concluido.html';
+    try{
+        await conectaApi.criaVideo(titulo,descricao,url,imagem);
+    
+        window.location.href = '../pages/envio-concluido.html';
+    }catch(e){
+        alert(e);
+    }
 }
 
